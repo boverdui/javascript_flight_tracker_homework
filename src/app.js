@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     flightView.renderFlights(data.acList);
   });
 
-  const fromEdiButton = document.querySelector('#from-edi');
+  const fromAmsButton = document.querySelector('#from-ams');
 
-  fromEdiButton.addEventListener('click', (evt) => {
+  fromAmsButton.addEventListener('click', (evt) => {
     flightData.getData((data) => {
       const selectedFlightData = [];
       data.acList.forEach(flight => {
-        if(flight.From === 'EGPH Edinburgh, United Kingdom') {
+        if(flight.From === 'EHAM Amsterdam Airport Schiphol, Netherlands') {
           selectedFlightData.push(flight);
         }
       });
@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const toEdiButton = document.querySelector('#to-edi');
+  const toAmsButton = document.querySelector('#to-ams');
 
-  toEdiButton.addEventListener('click', (evt) => {
+  toAmsButton.addEventListener('click', (evt) => {
     flightData.getData((data) => {
       const selectedFlightData = [];
       data.acList.forEach(flight => {
-        if(flight.To === 'EGPH Edinburgh, United Kingdom') {
+        if(flight.To === 'EHAM Amsterdam Airport Schiphol, Netherlands') {
           selectedFlightData.push(flight);
         }
       });

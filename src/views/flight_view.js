@@ -6,7 +6,7 @@ const FlightView = function (mapContainer) {
 
 FlightView.prototype.renderMap = function () {
     this.googleMap = new google.maps.Map(this.mapContainer, {
-      center: {lat: 55.9533, lng: -3.1883},
+      center: {lat: 52.3105, lng: 4.7683},
       zoom: 10
     });
 }
