@@ -12,21 +12,27 @@ FlightView.prototype.renderMap = function () {
 }
 
 FlightView.prototype.renderFlights = function (data) {
+
   clearMarkers();
+
   data.forEach(flight => {
     if(flight.Lat === undefined || flight.Long === undefined) {
       return
     }
+
     const icon = {
       url: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Plane_icon_nose_up.svg',
-      scaledSize: new google.maps.Size(20,20)
+      scaledSize: new google.maps.Size(15,15)
     }
+
     const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {lat: flight.Lat, lng: flight.Long},
       icon: icon
     });
+
     markers.push(marker);
+
     const contentString =
     '<div id="content">' +
     `From:&nbsp;&nbsp;&nbsp;&nbsp; ${flight.From}` + '<br>' +
@@ -35,10 +41,12 @@ FlightView.prototype.renderFlights = function (data) {
     `Type:&nbsp;&nbsp;&nbsp;&nbsp; ${flight.Mdl}` + '<br>' +
     `Altitude: ${flight.Alt} feet` + '<br>' +
     '</div>';
+
     const infowindow = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 400
     });
+    
     marker.addListener('click', function () {
       infowindow.open(this.googlemap, marker);
     });

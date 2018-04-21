@@ -4,6 +4,9 @@ const FlightView = require('./views/flight_view.js');
 document.addEventListener('DOMContentLoaded', () => {
 
   const mapContainer = document.querySelector('#map');
+  const fromAmsButton = document.querySelector('#from-ams');
+  const toAmsButton = document.querySelector('#to-ams');
+  const reloadButton = document.querySelector('#reload');
 
   const flightView = new FlightView(mapContainer);
 
@@ -13,8 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     flightView.renderMap();
     flightView.renderFlights(data.acList);
   });
-
-  const fromAmsButton = document.querySelector('#from-ams');
 
   fromAmsButton.addEventListener('click', (evt) => {
     flightData.getData((data) => {
@@ -28,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const toAmsButton = document.querySelector('#to-ams');
-
   toAmsButton.addEventListener('click', (evt) => {
     flightData.getData((data) => {
       const filteredData = [];
@@ -41,8 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       flightView.renderFlights(filteredData);
     });
   });
-
-  const reloadButton = document.querySelector('#reload');
 
   reloadButton.addEventListener('click', (evt) => {
     flightData.getData((data) => {
