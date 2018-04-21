@@ -5,18 +5,23 @@
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="js/bundle.js"></script>
-    <title>Flight Radar</title>
+    <title>Flight Tracker</title>
+    <link rel="icon" href="./images/plane.png">
   </head>
   <body>
+    <h1>FLIGHT TRACKER</h1>
     <div id="map"></div>
-    <button id="from-ams">
-      Flights from Amsterdam
-    </button>
-    <button id="to-ams">
-      Flights to Amsterdam
-    </button>
-    <button id="mil">
-      Military
-    </button>
+    <div id="buttons">
+      <button id="from-ams">
+        Flights from Amsterdam
+      </button>
+      <button id="mil">
+        Military
+      </button>
+      <button id="to-ams">
+        Flights to Amsterdam
+      </button>
+    </div>
+    <h4>Data source: <a href="https://www.adsbexchange.com/">ADS-B Exchange</a></h4>
   </body>
 </html>

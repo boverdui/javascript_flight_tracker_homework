@@ -29,10 +29,11 @@ FlightView.prototype.renderFlights = function (data) {
     markers.push(marker);
     const contentString =
     '<div id="content">' +
+    `From:&nbsp;&nbsp;&nbsp;&nbsp; ${flight.From}` + '<br>' +
+    `To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${flight.To}` + '<br>' +
     `Operator: ${flight.Op}` + '<br>' +
-    `From:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${flight.From}` + '<br>' +
-    `To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${flight.To}` + '<br>' +
-    `Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${flight.Mdl}` + '<br>' +
+    `Type:&nbsp;&nbsp;&nbsp;&nbsp; ${flight.Mdl}` + '<br>' +
+    `Altitude: ${flight.Alt} feet` + '<br>' +
     '</div>';
     const infowindow = new google.maps.InfoWindow({
       content: contentString,
