@@ -9,7 +9,9 @@ Request.prototype.get = function(onComplete) {
     if(this.status !== 200) {
       return;
     }
+
     const responseBody = JSON.parse(this.responseText);
+
     onComplete(responseBody);
   });
   request.send();

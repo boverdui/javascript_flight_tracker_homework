@@ -8,40 +8,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const toAmsButton = document.querySelector('#to-ams');
   const reloadButton = document.querySelector('#reload');
 
-  const flightView = new FlightView(mapContainer);
-
   const flightData = new FlightData();
+  const flightView = new FlightView(mapContainer);
 
   flightData.getData((data) => {
     flightView.renderMap();
     flightView.renderFlights(data.acList);
   });
 
-  fromAmsButton.addEventListener('click', (evt) => {
+  const filterData = (data, filter) => {
+    const filteredData = [];
+    data.acList.forEach(flight => {
+      if(flight[filter] === 'EHAM Amsterdam Airport Schiphol, Netherlands') {
+        filteredData.push(flight);
+      }
+    });
+    return filteredData;
+  }
+
+  fromAmsButton.addEventListener('click', () => {
     flightData.getData((data) => {
-      const filteredData = [];
-      data.acList.forEach(flight => {
-        if(flight.From === 'EHAM Amsterdam Airport Schiphol, Netherlands') {
-          filteredData.push(flight);
-        }
-      });
+      const filteredData = filterData(data, 'From');
       flightView.renderFlights(filteredData);
     });
   });
 
-  toAmsButton.addEventListener('click', (evt) => {
+  toAmsButton.addEventListener('click', () => {
     flightData.getData((data) => {
-      const filteredData = [];
-      data.acList.forEach(flight => {
-        if(flight.To === 'EHAM Amsterdam Airport Schiphol, Netherlands') {
-          filteredData.push(flight);
-        }
-      });
+      const filteredData = filterData(data, 'To');
       flightView.renderFlights(filteredData);
     });
   });
 
-  reloadButton.addEventListener('click', (evt) => {
+  reloadButton.addEventListener('click', () => {
     flightData.getData((data) => {
       flightView.renderFlights(data.acList);
     });

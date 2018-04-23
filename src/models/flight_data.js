@@ -5,7 +5,7 @@ const FlightData = function() {
   this.data = null;
 }
 
-FlightData.prototype.getData = function (onComplete) {
+FlightData.prototype.getData = function(onComplete) {
   const request = new Request(this.url);
   request.get((data) => {
     this.data = data;

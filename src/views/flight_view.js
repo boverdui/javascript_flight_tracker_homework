@@ -1,17 +1,17 @@
 markers = [];
 
-const FlightView = function (mapContainer) {
+const FlightView = function(mapContainer) {
   this.mapContainer = mapContainer;
 }
 
-FlightView.prototype.renderMap = function () {
+FlightView.prototype.renderMap = function() {
     this.googleMap = new google.maps.Map(this.mapContainer, {
       center: {lat: 52.3105, lng: 4.7683},
       zoom: 10
     });
 }
 
-FlightView.prototype.renderFlights = function (data) {
+FlightView.prototype.renderFlights = function(data) {
 
   clearMarkers();
 
@@ -46,14 +46,14 @@ FlightView.prototype.renderFlights = function (data) {
       content: contentString,
       maxWidth: 400
     });
-    
-    marker.addListener('click', function () {
+
+    marker.addListener('click', function() {
       infowindow.open(this.googlemap, marker);
     });
   });
 }
 
-const clearMarkers = function () {
+const clearMarkers = function() {
   for (var i = 0; i < markers.length; i++ ) {
     markers[i].setMap(null);
   }
